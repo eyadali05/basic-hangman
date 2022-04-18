@@ -1,6 +1,7 @@
 from word_generator import word_gen
 import sys
 import os
+from rich.emoji import Emoji
 
 chosen_word = word_gen()
 
@@ -75,6 +76,7 @@ def replay():
         print("invalid choice, Play again? (y/n): ")
         play_again = input()
     if play_again == 'y':
+        rejected_letters.clear()
         main()
     else:
         sys.exit()
