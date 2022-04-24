@@ -1,7 +1,6 @@
 from word_generator import word_gen
 import sys
 import os
-from rich.emoji import Emoji
 
 chosen_word = word_gen()
 
@@ -28,16 +27,20 @@ not_hang_man = [
 
 rejected_letters = []
 
+won = 0
+lost = 0
+
 
 def hang_man_func(hman_list):
     for index in hman_list:
         print(str(index))
 
 def main():
+    chosen_word = word_gen()
     count = 0
-    won = 0
-    lost = 0
     guess_row_list = guess_row(chosen_word)
+    global won
+    global lost
     try:
         while "_" in guess_row_list:
             os.system("clear")
@@ -76,6 +79,8 @@ def replay():
         print("invalid choice, Play again? (y/n): ")
         play_again = input()
     if play_again == 'y':
+        for i in range(len(not_hang_man)):
+            not_hang_man[i] = ""
         rejected_letters.clear()
         main()
     else:
