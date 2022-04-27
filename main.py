@@ -9,6 +9,7 @@ def guess_row(word):
     guess_length = ["_" for letter in range(len(chosen_word) - 1)]
     return guess_length
 
+
 hang_man = [
     " |",
     " O",
@@ -35,6 +36,7 @@ def hang_man_func(hman_list):
     for index in hman_list:
         print(str(index))
 
+
 def main():
     chosen_word = word_gen()
     count = 0
@@ -48,7 +50,7 @@ def main():
             print(f"Lost: {lost}")
             hang_man_func(not_hang_man)
             for _ in guess_row_list:
-                print(f"{_}" ,end=" ")
+                print(f"{_}", end=" ")
             print("")
             print(f"rejected letters: {rejected_letters}")
             guess_input = str(input("Try to Guess: "))
@@ -56,7 +58,7 @@ def main():
                 print("Guess can only be 1 character")
                 guess_input = str(input("Invalid input, try again:"))
             if guess_input in chosen_word:
-                for pos,char in enumerate(chosen_word):
+                for pos, char in enumerate(chosen_word):
                     if char == guess_input:
                         guess_row_list[pos] = str(guess_input)
             else:
@@ -65,20 +67,20 @@ def main():
                 rejected_letters.append(guess_input)
     except IndexError:
         print(f"you lost, the word was {chosen_word}")
-        lost +=1
+        lost += 1
         replay()
     if "_" not in guess_row_list:
         print(f"And that's a win!, the word was {chosen_word}")
-        won +=1
+        won += 1
         replay()
 
 
 def replay():
     play_again = input("Play again? (y/n): ")
-    while play_again != 'y' and play_again != 'n':
+    while play_again != "y" and play_again != "n":
         print("invalid choice, Play again? (y/n): ")
         play_again = input()
-    if play_again == 'y':
+    if play_again == "y":
         for i in range(len(not_hang_man)):
             not_hang_man[i] = ""
         rejected_letters.clear()
