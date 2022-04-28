@@ -12,7 +12,6 @@ bandwagon
 banjo
 bayou
 beekeeper
-bikini
 blitz
 blizzard
 boggle
@@ -210,4 +209,4 @@ zigzagging
 zilch
 zipper
 zodiac
-zombie       
+zombie
