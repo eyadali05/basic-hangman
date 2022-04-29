@@ -52,6 +52,10 @@ class Hangman:
         print("=|")
         for index in hman_list:
             print(str(index))
+    
+    def clear_hang_man(self, hman_list: list):
+        for index in range(1, 5, 1):
+            hman_list[index] = ""
 
     def display_menu(self):
         md = ""
@@ -135,8 +139,18 @@ class Hangman:
                     not_hang_man[self.count] = hang_man[self.count - 1]
                     self.rejected_letters.append(guess_input)
         except IndexError:
-            print(f"You [red]Lost[/red], the word was [bold italic green]{self.chosen_word}[/bold italic green]")
-            lost += 1
-            if "_" not in guess_row_list:
+            underscores_num = 0
+            for _ in guess_row_list:
+                if '_' in _:
+                    underscores_num += 1
+            
+            if underscores_num >= 1:
+                print(f"You [red]Lost[/red], the word was [bold italic green]{self.chosen_word}[/bold italic green]")
+                self.clear_hang_man(not_hang_man)
+                print(underscores_num)
+                lost += 1
+            elif underscores_num == 0:
                 print(f"And that's a [bold yello]WIN[/bold yellow]!, the word was [bold italic green]{self.chosen_word}[/bold italic green]")
+                self.clear_hang_man(not_hang_man)
+                print(underscores_num)
                 won += 1
